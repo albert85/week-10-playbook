@@ -1,0 +1,30 @@
+---
+- name: Deploy NGINX
+  hosts: nginx
+  become: yes
+  tasks:
+    - name: Install NGINX
+      yum:
+        name: nginx
+        state: present
+    
+    - name: Start NGINX
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+  
+- name: Deploy Java Application
+  hosts: java
+  become: yes
+  tasks:
+    - name: Install Java
+      yum:
+        name: java-11-amazon-corretto-headless
+        state: present
+    
+    - name: Start Java
+      service:
+        name: java
+        state: started
+        enabled: yes
