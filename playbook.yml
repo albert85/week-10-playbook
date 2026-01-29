@@ -14,7 +14,7 @@
         state: started
         enabled: yes
   
-- name: Deploy Java Application
+- name: Deploy Java Runtime
   hosts: java
   become: yes
   tasks:
@@ -22,9 +22,3 @@
       yum:
         name: java-11-amazon-corretto-headless
         state: present
-    
-    - name: Start Java
-      service:
-        name: java
-        state: started
-        enabled: yes
